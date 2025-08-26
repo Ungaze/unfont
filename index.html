@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unfont - Font Scale Visualizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Controls Sidebar -->
+    <div class="controls-sidebar">
+        <div class="sidebar-title">
+            <h1>Unfont Visualizer</h1>
+        </div>
+        
+        <div class="control-group">
+            <h3>Font Controls</h3>
+            
+            <div class="control">
+                <label for="fontSize">Base Font Size</label>
+                <input type="range" id="fontSize" min="6" max="32" value="16" step="1">
+                <div class="value-display">
+                    <span>6px</span>
+                    <span id="fontSizeValue">16px</span>
+                    <span>32px</span>
+                </div>
+            </div>
+            
+            <div class="control">
+                <label for="lineHeight">Line Height</label>
+                <input type="range" id="lineHeight" min="1" max="2.5" value="1.5" step="0.1">
+                <div class="value-display">
+                    <span>1.0</span>
+                    <span id="lineHeightValue">1.5</span>
+                    <span>2.5</span>
+                </div>
+            </div>
+            
+            <div class="control">
+                <label for="fontFamily">Font Family</label>
+                <select id="fontFamily">
+                    <option value="system-ui, -apple-system, sans-serif">System UI</option>
+                    <option value="Georgia, serif">Georgia</option>
+                    <option value="'Courier New', monospace">Courier New</option>
+                    <option value="Arial, sans-serif">Arial</option>
+                    <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="control-group">
+            <h3>Screen Presets</h3>
+            
+            <div class="control">
+                <label for="screenSize">Device Type</label>
+                <select id="screenSize" class="screen-select">
+                    <option value="old-mobile">Older Phone (320×480)</option>
+                    <option value="mobile">Mobile (360×640)</option>
+                    <option value="large-mobile">Large Mobile (414×896)</option>
+                    <option value="high-res-mobile">High-Res Phone (1440×2560)</option>
+                    <option value="small-tablet">Small Tablet (768×1024)</option>
+                    <option value="tablet">Tablet (1024×1366)</option>
+                    <option value="laptop">Laptop (1366×768)</option>
+                    <option value="desktop" selected>Desktop (1920×1080)</option>
+                    <option value="large-desktop">Large Desktop (2560×1440)</option>
+                    <option value="ultrawide">Ultrawide (3440×1440)</option>
+                    <option value="4k">4K Display (3840×2160)</option>
+                    <option value="custom">Custom Size</option>
+                </select>
+            </div>
+            
+            <div class="control" id="customWidthControl" style="display: none;">
+                <label for="customWidth">Custom Width (px)</label>
+                <input type="number" id="customWidth" min="300" max="5000" value="1200">
+            </div>
+            
+            <div class="control" id="customHeightControl" style="display: none;">
+                <label for="customHeight">Custom Height (px)</label>
+                <input type="number" id="customHeight" min="400" max="5000" value="800">
+            </div>
+        </div>
+        
+        <button class="button" id="resetButton" style="width: 100%; margin-top: 10px;">
+            <i class="fas fa-redo"></i> Reset Settings
+        </button>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <button class="button" id="sidebar-toggle">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="preview-container">
+            <div class="preview-content" id="previewContent">
+                <div class="website-preview" id="websitePreview">
+                    <div class="website-header">
+                        <h1 id="headerText">Welcome to Our Website</h1>
+                        <p id="subheaderText">Discover amazing products and services tailored just for you</p>
+                    </div>
+                    
+                    <div class="website-body">
+                        <div class="content-section">
+                            <h2 id="contentTitle">About Our Company</h2>
+                            <p id="contentText">We are a dedicated team of professionals committed to delivering exceptional digital experiences. With over 10 years in the industry, we've helped countless businesses establish their online presence and reach their target audience effectively. Our approach combines creativity with technical excellence to produce results that matter.</p>
+                        </div>
+                        
+                        <div class="content-section">
+                            <h3 id="secondaryTitle">Our Services</h3>
+                            <p id="secondaryText">We provide comprehensive web design and development services tailored to your specific needs. Our solutions are responsive, accessible, and optimized for performance across all devices and screen sizes.</p>
+                            
+                            <div class="feature-grid">
+                                <div class="feature-item">
+                                    <h4>Web Design</h4>
+                                    <p>Beautiful, intuitive interfaces that enhance user experience</p>
+                                </div>
+                                <div class="feature-item">
+                                    <h4>Development</h4>
+                                    <p>Robust, scalable solutions using modern technologies</p>
+                                </div>
+                                <div class="feature-item">
+                                    <h4>E-Commerce</h4>
+                                    <p>Complete online store solutions with secure payment processing</p>
+                                </div>
+                                <div class="feature-item">
+                                    <h4>SEO Optimization</h4>
+                                    <p>Increase visibility and drive organic traffic to your site</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="content-section">
+                            <h3>Why Choose Us?</h3>
+                            <p>Our commitment to quality, attention to detail, and customer-focused approach sets us apart. We believe in building long-term relationships with our clients by delivering exceptional value and outstanding results.</p>
+                        </div>
+                        
+                        <div style="margin-top: 30px; text-align: center;">
+                            <button class="button">
+                                <i class="fas fa-envelope"></i> Contact Us
+                            </button>
+                            <button class="button" style="background: var(--dark); margin-left: 10px;">
+                                <i class="fas fa-book"></i> Learn More
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="website-footer">
+                        <p id="footerText">© 2023 Example Company. All rights reserved. Privacy Policy | Terms of Service</p>
+                    </div>
+                </div>
+                
+                <!-- Info Overlay -->
+                <div class="info-overlay" id="infoOverlay">
+                    <div class="info-item">
+                        <span id="deviceInfo">Desktop (1920×1080)</span>
+                    </div>
+                    <div class="info-item">
+                        <span id="currentFontSize">16px</span>
+                    </div>
+                    <div class="info-item">
+                        <span id="scaleInfo">100%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
