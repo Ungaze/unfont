@@ -9,6 +9,13 @@
     --gray: #a0aec0;
     --sidebar-width: 280px;
     --border-radius: 8px;
+    --zdark: #262C2B;
+    --zlight: #E7ECEA;
+    --zlight2: #B7BCBA;
+    --zlight3: #F7FCFA;
+    --zmedium: #8C9F9F;
+    --clight: #B5735E;
+    --cdark: #724746;
 }
 
 * {
@@ -19,8 +26,8 @@
 }
 
 body {
-    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
-    color: var(--dark);
+    background: linear-gradient(135deg, var(--zlight3) 0%, var(--zlight2) 100%);
+    color: var(--zdark);
     min-height: 100vh;
     line-height: 1.5;
     display: flex;
@@ -30,12 +37,12 @@ body {
 /* Control Sidebar */
 .controls-sidebar {
     width: var(--sidebar-width);
-    background: white;
+    background: var(--zlight);
     height: 100vh;
     position: fixed;
     left: 0;
     top: 0;
-    padding: 20px;
+    padding: 10px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
     overflow-y: auto;
     z-index: 100;
@@ -50,24 +57,32 @@ body {
 .sidebar-title {
     text-align: center;
     margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #e2e8f0;
-    color: var(--primary);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--zmedium);
 }
 
 .sidebar-title h1 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     font-weight: 600;
     letter-spacing: -0.5px;
+    color: var(--clight);
+}
+
+.sidebar-title h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: var(--zmedium);
+
 }
 
 .control-group {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .control-group h3 {
     margin-bottom: 10px;
-    color: var(--dark);
+    color: var(--cdark);
     font-size: 0.9rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -75,14 +90,14 @@ body {
 }
 
 .control {
-    margin-bottom: 12px;
+    margin-bottom: 6px;
 }
 
 label {
     display: block;
     margin-bottom: 6px;
     font-weight: 500;
-    color: var(--dark);
+    color: var(--zdark);
     font-size: 0.9rem;
 }
 
@@ -91,7 +106,7 @@ input[type="range"] {
     height: 6px;
     -webkit-appearance: none;
     appearance: none;
-    background: linear-gradient(to right, var(--primary), var(--accent));
+    background: linear-gradient(to right, var(--clight), var(--cdark));
     outline: none;
     border-radius: 3px;
 }
@@ -103,7 +118,7 @@ input[type="range"]::-webkit-slider-thumb {
     height: 18px;
     border-radius: 50%;
     background: white;
-    border: 2px solid var(--primary);
+    border: 2px solid var(--zmedium);
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -114,7 +129,7 @@ input[type="number"], select {
     border: 1px solid #e2e8f0;
     border-radius: var(--border-radius);
     font-size: 0.9rem;
-    background: white;
+    background: var(--zlight);
     color: var(--dark);
 }
 
@@ -122,7 +137,7 @@ input[type="number"], select {
     display: flex;
     justify-content: space-between;
     margin-top: 4px;
-    color: var(--secondary);
+    color: var(--clight);
     font-weight: 500;
     font-size: 0.8rem;
 }
@@ -149,10 +164,10 @@ input[type="number"], select {
     left: 0;
     transform: translateY(-50%);
     z-index: 101;
-    width: 30px;
+    width: 25px;
     height: 60px;
     padding: 0;
-    border-radius: 0 30px 30px 0;
+    border-radius: 0 20px 20px 0;
     justify-content: center;
     padding-left: 5px;
     transition: left 0.3s ease, background-color 0.2s;
@@ -160,6 +175,22 @@ input[type="number"], select {
 
 .controls-sidebar.active ~ .main-content #sidebar-toggle {
     left: var(--sidebar-width);
+}
+
+.arrow {
+    stroke: var(--zdark);
+    stroke-width: 15;
+    stroke-linecap: round;
+    transition: all 0.5s ease;
+}
+
+.svg-container {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+    display:flex;
+    position: relative;
+    left: -3px
 }
 
 #sidebar-toggle .fas {
@@ -174,7 +205,7 @@ input[type="number"], select {
 /* Preview Container */
 .preview-container {
     flex: 1;
-    background: white;
+    background: var(--zlight);
     border-radius: var(--border-radius);
     padding: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
@@ -188,7 +219,7 @@ input[type="number"], select {
     flex: 1;
     border-radius: var(--border-radius);
     overflow: auto;
-    background: var(--light);
+    background: var(--zlight);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,7 +228,7 @@ input[type="number"], select {
 }
 
 .website-preview {
-    background: white;
+    background: var(--zlight);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -213,8 +244,8 @@ input[type="number"], select {
 }
 
 .website-header {
-    background: var(--primary);
-    color: white;
+    background: var(--zmedium);
+    color: var(--zlight);
     padding: 25px;
     text-align: center;
 }
@@ -233,8 +264,8 @@ input[type="number"], select {
 }
 
 .website-footer {
-    background: var(--dark);
-    color: white;
+    background: var(--zdark);
+    color: var(--zlight);
     padding: 12px;
     text-align: center;
     font-size: 0.85rem;
@@ -246,7 +277,7 @@ input[type="number"], select {
     left: 50%;
     transform: translateX(-50%);
     background: rgba(255, 255, 255, 0.88);
-    color: var(--dark);
+    color: var(--zdark);
     padding: 8px 15px;
     border-radius: 20px;
     font-size: 0.8rem;
@@ -264,8 +295,8 @@ input[type="number"], select {
 }
 
 .button {
-    background: white;
-    color: var(--primary);
+    background: var(--zlight);
+    color: var(--zmedium);
     border: none;
     padding: 8px 15px;
     border-radius: var(--border-radius);
@@ -279,7 +310,7 @@ input[type="number"], select {
 }
 
 .button:hover {
-    background: var(--secondary);
+    background: var(--clight);
     transform: translateY(-1px);
 }
 
@@ -292,7 +323,7 @@ input[type="number"], select {
 
 .feature-item {
     padding: 12px;
-    background: #f8fafc;
+    background: var(--zlight);
     border-radius: var(--border-radius);
-    border-left: 3px solid var(--primary);
+    border-left: 3px solid var(--zmedium);
 }

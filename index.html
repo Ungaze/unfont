@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unfont - Font Scale Visualizer</title>
+    <title>Unfont - Font Size Visualizer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +11,8 @@
     <!-- Controls Sidebar -->
     <div class="controls-sidebar">
         <div class="sidebar-title">
-            <h1>Unfont Visualizer</h1>
+            <h1>Unfont</h1>
+            <h2>Font Size Visualizer</h2>
         </div>
         
         <div class="control-group">
@@ -19,20 +20,20 @@
             
             <div class="control">
                 <label for="fontSize">Base Font Size</label>
-                <input type="range" id="fontSize" min="6" max="32" value="16" step="1">
+                <input type="range" id="fontSize" min="6" max="32" step="1">
                 <div class="value-display">
                     <span>6px</span>
-                    <span id="fontSizeValue">16px</span>
+                    <span id="fontSizeValue"></span>
                     <span>32px</span>
                 </div>
             </div>
             
             <div class="control">
                 <label for="lineHeight">Line Height</label>
-                <input type="range" id="lineHeight" min="1" max="2.5" value="1.5" step="0.1">
+                <input type="range" id="lineHeight" min="1" max="2.5" step="0.1">
                 <div class="value-display">
                     <span>1.0</span>
-                    <span id="lineHeightValue">1.5</span>
+                    <span id="lineHeightValue"></span>
                     <span>2.5</span>
                 </div>
             </div>
@@ -62,7 +63,7 @@
                     <option value="small-tablet">Small Tablet (768×1024)</option>
                     <option value="tablet">Tablet (1024×1366)</option>
                     <option value="laptop">Laptop (1366×768)</option>
-                    <option value="desktop" selected>Desktop (1920×1080)</option>
+                    <option value="desktop">Desktop (1920×1080)</option>
                     <option value="large-desktop">Large Desktop (2560×1440)</option>
                     <option value="ultrawide">Ultrawide (3440×1440)</option>
                     <option value="4k">4K Display (3840×2160)</option>
@@ -72,12 +73,12 @@
             
             <div class="control" id="customWidthControl" style="display: none;">
                 <label for="customWidth">Custom Width (px)</label>
-                <input type="number" id="customWidth" min="300" max="5000" value="1200">
+                <input type="number" id="customWidth" min="300" max="5000">
             </div>
             
             <div class="control" id="customHeightControl" style="display: none;">
                 <label for="customHeight">Custom Height (px)</label>
-                <input type="number" id="customHeight" min="400" max="5000" value="800">
+                <input type="number" id="customHeight" min="400" max="5000">
             </div>
         </div>
         
@@ -89,7 +90,14 @@
     <!-- Main Content -->
     <div class="main-content">
         <button class="button" id="sidebar-toggle">
-            <i class="fas fa-chevron-right"></i>
+            <div class="svg-container">
+                <svg viewBox="0 0 100 100">
+                    <!-- Right arrow (>) -->
+                    <path class="arrow right-arrow" d="M35,20 L65,50" fill="none"/>
+                    <path class="arrow left-arrow" d="M35,80 L65,50" fill="none"/>
+                </svg>
+            </div>
+            <!-- <i class="fas fa-chevron-right"></i> -->
         </button>
         <div class="preview-container">
             <div class="preview-content" id="previewContent">
@@ -152,13 +160,13 @@
                 <!-- Info Overlay -->
                 <div class="info-overlay" id="infoOverlay">
                     <div class="info-item">
-                        <span id="deviceInfo">Desktop (1920×1080)</span>
+                        <span id="deviceInfo"></span>
                     </div>
                     <div class="info-item">
-                        <span id="currentFontSize">16px</span>
+                        <span id="currentFontSize"></span>
                     </div>
                     <div class="info-item">
-                        <span id="scaleInfo">100%</span>
+                        <span id="scaleInfo"></span>
                     </div>
                 </div>
             </div>

@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentFontSize = document.getElementById('currentFontSize');
     const sidebar = document.querySelector('.controls-sidebar');
     const sidebarToggle = document.getElementById('sidebar-toggle');
+    const rightArrow = sidebarToggle.querySelector('.right-arrow');
+    const leftArrow = sidebarToggle.querySelector('.left-arrow');
     
     // Get text elements
     const headerText = document.getElementById('headerText');
@@ -48,6 +50,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let originalWidth = 1920;
     let originalHeight = 1080;
     let currentScale = 1;
+    let isRightArrow = true;
+
+    function initializeControls() {
+        fontSizeSlider.value = 16;
+        lineHeightSlider.value = 1.5;
+        fontFamilySelect.value = "system-ui, -apple-system, sans-serif";
+        screenSizeSelect.value = "desktop";
+        customWidthInput.value = 1200;
+        customHeightInput.value = 800;
+    }
     
     // Update function
     function updateFontStyles() {
@@ -133,13 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Reset all settings
     resetButton.addEventListener('click', function() {
-        fontSizeSlider.value = 16;
-        lineHeightSlider.value = 1.5;
-        fontFamilySelect.value = "system-ui, -apple-system, sans-serif";
-        screenSizeSelect.value = "desktop";
-        customWidthInput.value = 1200;
-        customHeightInput.value = 800;
-        
+        initializeControls();
         updateFontStyles();
         updateScreenSize();
     });
@@ -147,6 +153,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Toggle sidebar
     sidebarToggle.addEventListener('click', () => {
         sidebar.classList.toggle('active');
+        if (isRightArrow) {
+            // Transform to left arrow
+            rightArrow.setAttribute('d', 'M65,20 L35,50');
+            leftArrow.setAttribute('d', 'M65,80 L35,50');
+        } else {
+            // Transform back to right arrow
+            rightArrow.setAttribute('d', 'M35,20 L65,50');
+            leftArrow.setAttribute('d', 'M35,80 L65,50');
+        }
+        
+        // Toggle state
+        isRightArrow = !isRightArrow;
+
         setTimeout(scalePreview, 300); // Wait for transition to finish
     });
     
@@ -162,6 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', scalePreview);
     
     // Initialize
+    initializeControls();
     updateFontStyles();
     updateScreenSize();
 });
